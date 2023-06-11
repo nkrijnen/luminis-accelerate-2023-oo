@@ -17,4 +17,9 @@ class VolumeTest {
         assertEquals(b, a)
         assertEquals(a.hashCode(), b.hashCode())
     }
+
+    @Test
+    fun `should add volumes`() {
+        assertEquals(2.gill, 5.oz + 1.gill)
+    }
 }

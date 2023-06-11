@@ -23,6 +23,9 @@ class Volume internal constructor(private val amount: Number, private val unit: 
         result = 31 * result + unit.hashCode()
         return result
     }
+
+    operator fun plus(other: Volume): Volume =
+        Volume(amount.toDouble() + other.unit.convertTo(unit, other.amount).toDouble(), this.unit)
 }
 
 val Number.oz get() = Volume(this, VolumeUnit.oz)
