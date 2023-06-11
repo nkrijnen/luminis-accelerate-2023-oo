@@ -25,6 +25,6 @@ class Volume(private val amount: Number, private val unit: VolumeUnit) {
     }
 }
 
-fun Number.oz() = Volume(this, VolumeUnit.oz)
-fun Number.gill() = Volume(this, VolumeUnit.gill)
-fun Number.pint() = Volume(this, VolumeUnit.pint)
+val Number.oz get() = Volume(this, VolumeUnit.oz)
+val Number.gill get() = Volume(this, VolumeUnit.gill)
+val Number.pint get() = Volume(this, VolumeUnit.pint)

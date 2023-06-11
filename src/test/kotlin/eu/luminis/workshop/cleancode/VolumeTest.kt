@@ -5,14 +5,14 @@ import kotlin.test.*
 class VolumeTest {
     @Test
     fun `should be equal between different volume units`() {
-        assertEquals(1.gill(), 5.oz())
-        assertEquals(1.pint(), 4.gill())
+        assertEquals(1.gill, 5.oz)
+        assertEquals(1.pint, 4.gill)
     }
 
     @Test
     fun `should respect hashCode & equals contract`() {
-        val a = 1.gill()
-        val b = 1.gill()
+        val a = 1.gill
+        val b = 1.gill
         assertEquals(a, b)
         assertEquals(b, a)
         assertEquals(a.hashCode(), b.hashCode())
