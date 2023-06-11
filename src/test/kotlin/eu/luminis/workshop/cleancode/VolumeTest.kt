@@ -9,6 +9,9 @@ class VolumeTest {
     fun `should be equal between different volume units`() {
         assertEquals(1.gill, 5.oz)
         assertEquals(1.pint, 4.gill)
+        assertEquals(1.quart, 2.pint)
+        assertEquals(1.gallon, 4.quart)
+
         assertEquals(0.gill, 0.oz)
         assertEquals(0.25.pint, 1.gill)
 

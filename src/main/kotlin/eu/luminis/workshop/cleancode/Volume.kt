@@ -7,6 +7,8 @@ internal class VolumeUnit(private val baseAmount: Int) {
         val oz = VolumeUnit(1)
         val gill = VolumeUnit(5, oz)
         val pint = VolumeUnit(4, gill)
+        val quart = VolumeUnit(2, pint)
+        val gallon = VolumeUnit(4, quart)
     }
 
     private constructor(amount: Int, unit: VolumeUnit) : this(amount * unit.baseAmount)
@@ -37,3 +39,5 @@ private fun Number.sameValueAs(other: Number): Boolean =
 val Number.oz get() = Volume(this, VolumeUnit.oz)
 val Number.gill get() = Volume(this, VolumeUnit.gill)
 val Number.pint get() = Volume(this, VolumeUnit.pint)
+val Number.quart get() = Volume(this, VolumeUnit.quart)
+val Number.gallon get() = Volume(this, VolumeUnit.gallon)
