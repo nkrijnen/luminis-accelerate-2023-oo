@@ -49,4 +49,9 @@ public class VolumeTest {
         assertEquals(pint(0), gill(1).subtract(gill(1)));
     }
 
+    @Test
+    public void shouldMultiplyVolumes() {
+        assertEquals(gill(2), gill(1).multiplyBy(2));
+    }
+
 }
