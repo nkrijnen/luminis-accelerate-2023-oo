@@ -39,15 +39,24 @@ public class Volume {
     }
 
     @Override
+    public int hashCode() {
+        return amountInBaseUnit().hashCode();
+    }
+
+    @Override
     public String toString() {
         return amount + " " + unit.convertTo(VolumeUnit.oz, amount);
     }
 
-    private boolean sameValue(Number value, Number other) {
-        return Math.abs(value.doubleValue() - other.doubleValue()) < EPSILON;
+    private Number amountInBaseUnit() {
+        return unit.convertToBaseUnit(amount);
     }
 
     private Number convertToThisUnit(Volume other) {
         return other.unit.convertTo(this.unit, other.amount);
+    }
+
+    private boolean sameValue(Number value, Number other) {
+        return Math.abs(value.doubleValue() - other.doubleValue()) < EPSILON;
     }
 }

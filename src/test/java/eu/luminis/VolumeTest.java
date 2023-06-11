@@ -21,4 +21,20 @@ public class VolumeTest {
         assertNotEquals(gill(1), oz(1));
     }
 
+    @Test
+    public void shouldRespectHashCodeEqualsContract() {
+        assertEquals(gill(0).hashCode(), oz(0).hashCode());
+
+        var a = gill(1);
+        var b = gill(1);
+        assertEquals(a, b);
+        assertEquals(b, a);
+        assertEquals(a.hashCode(), b.hashCode());
+
+        var c = gill(2);
+        assertNotEquals(a, c);
+        assertNotEquals(c, a);
+        assertNotEquals(a.hashCode(), c.hashCode());
+    }
+
 }

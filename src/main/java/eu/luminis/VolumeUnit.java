@@ -20,4 +20,8 @@ class VolumeUnit {
     public Number convertTo(VolumeUnit other, Number amount) {
         return amount.doubleValue() * baseAmount / other.baseAmount;
     }
+
+    public Number convertToBaseUnit(Number amount) {
+        return amount.doubleValue() * baseAmount / oz.baseAmount;
+    }
 }
