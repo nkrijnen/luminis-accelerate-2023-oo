@@ -10,6 +10,7 @@ class VolumeTest {
         assertEquals(1.gill, 5.oz)
         assertEquals(1.pint, 4.gill)
         assertEquals(0.gill, 0.oz)
+        assertEquals(0.25.pint, 1.gill)
 
         assertNotEquals(1.gill, 1.oz)
     }
@@ -31,5 +32,6 @@ class VolumeTest {
     @Test
     fun `should add volumes`() {
         assertEquals(2.gill, 5.oz + 1.gill)
+        assertEquals(2.gill, 0.25.pint + 1.gill)
     }
 }
