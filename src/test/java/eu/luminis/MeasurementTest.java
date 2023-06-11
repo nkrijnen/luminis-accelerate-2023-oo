@@ -2,22 +2,34 @@ package eu.luminis;
 
 import org.junit.jupiter.api.Test;
 
-import static eu.luminis.Volume.*;
+import static eu.luminis.Measurement.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class VolumeTest {
+public class MeasurementTest {
     @Test
-    public void shouldBeEqualBetweenDifferentVolumeUnits() {
+    public void shouldBeEqualBetweenDifferentUnits() {
+        assertEquals(gill(1), oz(5));
+        assertEquals(gill(0), oz(0));
+        assertEquals(pint(0.25), gill(1));
+        assertNotEquals(gill(1), oz(1));
+    }
+
+    @Test
+    public void shouldSupportVolumeUnits() {
         assertEquals(gill(1), oz(5));
         assertEquals(pint(1), gill(4));
         assertEquals(quart(1), pint(2));
         assertEquals(gallon(1), quart(4));
+    }
 
-        assertEquals(gill(0), oz(0));
-        assertEquals(pint(0.25), gill(1));
-
-        assertNotEquals(gill(1), oz(1));
+    @Test
+    public void shouldSupportDistanceUnits() {
+        assertEquals(foot(1), inch(12));
+        assertEquals(yard(1), foot(3));
+        assertEquals(chain(1), yard(22));
+        assertEquals(furlong(1), chain(10));
+        assertEquals(mile(1), furlong(8));
     }
 
     @Test
