@@ -20,7 +20,7 @@ internal class VolumeUnit(private val baseAmount: Int) {
 class Volume internal constructor(private val amount: Number, private val unit: VolumeUnit) {
     override fun equals(other: Any?): Boolean {
         if (other !is Volume) return false
-        return this.amount.sameValueAs(other.unit.convertTo(this.unit, other.amount))
+        return amount.sameValueAs(convertToThisUnit(other))
     }
 
     override fun hashCode(): Int {
@@ -29,9 +29,12 @@ class Volume internal constructor(private val amount: Number, private val unit: 
         return result
     }
 
-    operator fun plus(other: Volume): Volume =
-        Volume(amount.toDouble() + other.unit.convertTo(unit, other.amount).toDouble(), this.unit)
+    operator fun plus(other: Volume) = Volume(amount + convertToThisUnit(other), this.unit)
+
+    private fun convertToThisUnit(other: Volume) = other.unit.convertTo(this.unit, other.amount)
 }
+
+private operator fun Number.plus(other: Number): Number = this.toDouble() + other.toDouble()
 
 private fun Number.sameValueAs(other: Number): Boolean =
     abs(this.toDouble() - other.toDouble()) < 0.0000000001
