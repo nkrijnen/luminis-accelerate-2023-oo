@@ -37,4 +37,10 @@ class VolumeTest {
         assertEquals(2.gill, 5.oz + 1.gill)
         assertEquals(2.gill, 0.25.pint + 1.gill)
     }
+
+    @Test
+    fun `should subtract volumes`() {
+        assertEquals(2.gill, 3.gill - 5.oz)
+        assertEquals(0.pint, 1.gill - 1.gill)
+    }
 }
