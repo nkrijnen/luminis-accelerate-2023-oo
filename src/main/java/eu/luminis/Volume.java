@@ -59,11 +59,6 @@ public class Volume {
         return amountInBaseUnit().hashCode();
     }
 
-    @Override
-    public String toString() {
-        return amount + " " + unit.convertTo(VolumeUnit.oz, amount);
-    }
-
     private Number amountInBaseUnit() {
         return unit.convertToBaseUnit(amount);
     }
