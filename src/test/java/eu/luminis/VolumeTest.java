@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class VolumeTest {
-
     @Test
     public void shouldBeEqualBetweenDifferentVolumeUnits() {
         assertEquals(gill(1), oz(5));
@@ -58,5 +57,4 @@ public class VolumeTest {
     public void shouldMDivideVolumes() {
         assertEquals(gill(0.5), gill(1).divideBy(2));
     }
-
 }
