@@ -43,4 +43,14 @@ class VolumeTest {
         assertEquals(2.gill, 3.gill - 5.oz)
         assertEquals(0.pint, 1.gill - 1.gill)
     }
+
+    @Test
+    fun `should multiply volumes`() {
+        assertEquals(2.gill, 1.gill * 2)
+    }
+
+    @Test
+    fun `should divide volumes`() {
+        assertEquals(0.5.gill, 1.gill / 2)
+    }
 }

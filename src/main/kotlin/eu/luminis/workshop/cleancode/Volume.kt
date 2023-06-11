@@ -33,12 +33,20 @@ class Volume internal constructor(private val amount: Number, private val unit: 
 
     operator fun minus(other: Volume) = Volume(amount - convertToThisUnit(other), this.unit)
 
+    operator fun times(factor: Number) = Volume(amount * factor, unit)
+
+    operator fun div(factor: Number) = Volume(amount / factor, unit)
+
     private fun convertToThisUnit(other: Volume) = other.unit.convertTo(this.unit, other.amount)
 }
 
 private operator fun Number.plus(other: Number): Number = this.toDouble() + other.toDouble()
 
 private operator fun Number.minus(other: Number): Number = this.toDouble() - other.toDouble()
+
+private operator fun Number.times(factor: Number): Number = this.toDouble() * factor.toDouble()
+
+private operator fun Number.div(factor: Number): Number = this.toDouble() / factor.toDouble()
 
 private fun Number.sameValueAs(other: Number): Boolean =
     abs(this.toDouble() - other.toDouble()) < 0.0000000001
