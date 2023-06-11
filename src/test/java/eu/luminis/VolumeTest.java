@@ -43,4 +43,10 @@ public class VolumeTest {
         assertEquals(gill(2), pint(0.25).add(gill(1)));
     }
 
+    @Test
+    public void shouldSubtractVolumes() {
+        assertEquals(gill(2), gill(3).subtract(oz(5)));
+        assertEquals(pint(0), gill(1).subtract(gill(1)));
+    }
+
 }

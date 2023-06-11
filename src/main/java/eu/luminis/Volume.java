@@ -36,6 +36,10 @@ public class Volume {
         return new Volume(amount.doubleValue() + convertToThisUnit(other).doubleValue(), unit);
     }
 
+    public Volume subtract(Volume other) {
+        return new Volume(amount.doubleValue() - convertToThisUnit(other).doubleValue(), unit);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Volume)) return false;
