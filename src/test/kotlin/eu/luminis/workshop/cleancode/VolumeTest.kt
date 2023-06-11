@@ -7,6 +7,7 @@ class VolumeTest {
     fun `should be equal between different volume units`() {
         assertEquals(1.gill, 5.oz)
         assertEquals(1.pint, 4.gill)
+        assertEquals(0.gill, 0.oz)
     }
 
     @Test
