@@ -54,4 +54,9 @@ public class VolumeTest {
         assertEquals(gill(2), gill(1).multiplyBy(2));
     }
 
+    @Test
+    public void shouldMDivideVolumes() {
+        assertEquals(gill(0.5), gill(1).divideBy(2));
+    }
+
 }

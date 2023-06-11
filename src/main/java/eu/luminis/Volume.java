@@ -44,6 +44,10 @@ public class Volume {
         return new Volume(amount.doubleValue() * factor.doubleValue(), unit);
     }
 
+    public Volume divideBy(Number factor) {
+        return new Volume(amount.doubleValue() / factor.doubleValue(), unit);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Volume)) return false;
