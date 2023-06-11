@@ -37,4 +37,10 @@ public class VolumeTest {
         assertNotEquals(a.hashCode(), c.hashCode());
     }
 
+    @Test
+    public void shouldAddVolumes() {
+        assertEquals(gill(2), oz(5).add(gill(1)));
+        assertEquals(gill(2), pint(0.25).add(gill(1)));
+    }
+
 }

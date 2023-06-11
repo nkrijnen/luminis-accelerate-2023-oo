@@ -32,6 +32,10 @@ public class Volume {
         this.unit = unit;
     }
 
+    public Volume add(Volume other) {
+        return new Volume(amount.doubleValue() + convertToThisUnit(other).doubleValue(), unit);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Volume)) return false;
