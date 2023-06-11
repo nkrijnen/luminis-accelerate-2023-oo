@@ -9,19 +9,19 @@ class VolumeUnit {
 
     private final int baseAmount;
 
-    public VolumeUnit(int baseAmount) {
+    VolumeUnit(int baseAmount) {
         this.baseAmount = baseAmount;
     }
 
-    public VolumeUnit(int amount, VolumeUnit unit) {
+    VolumeUnit(int amount, VolumeUnit unit) {
         this(amount * unit.baseAmount);
     }
 
-    public Number convertTo(VolumeUnit other, Number amount) {
+    Number convertTo(VolumeUnit other, Number amount) {
         return amount.doubleValue() * baseAmount / other.baseAmount;
     }
 
-    public Number convertToBaseUnit(Number amount) {
+    Number convertToBaseUnit(Number amount) {
         return amount.doubleValue() * baseAmount / oz.baseAmount;
     }
 }
