@@ -3,16 +3,22 @@ package eu.luminis;
 import org.junit.jupiter.api.Test;
 
 import static eu.luminis.Measurement.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MeasurementTest {
     @Test
-    public void shouldBeEqualBetweenDifferentUnits() {
+    public void shouldBeEqualBetweenDifferentUnitsOfSameMeasurementType() {
         assertEquals(gill(1), oz(5));
         assertEquals(gill(0), oz(0));
         assertEquals(pint(0.25), gill(1));
         assertNotEquals(gill(1), oz(1));
+    }
+
+    @Test
+    public void shouldNeverEqualBetweenDifferentMeasurementTypes() {
+        assertThrows(IllegalArgumentException.class, () ->
+                assertNotEquals(inch(1), oz(1))
+        );
     }
 
     @Test
@@ -46,6 +52,8 @@ public class MeasurementTest {
         assertNotEquals(a, c);
         assertNotEquals(c, a);
         assertNotEquals(a.hashCode(), c.hashCode());
+
+        assertNotEquals(inch(1).hashCode(), oz(1).hashCode());
     }
 
     @Test

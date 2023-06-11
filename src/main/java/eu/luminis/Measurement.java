@@ -1,5 +1,7 @@
 package eu.luminis;
 
+import java.util.Objects;
+
 public class Measurement {
 
     public static Measurement oz(Number amount) {
@@ -82,11 +84,7 @@ public class Measurement {
 
     @Override
     public int hashCode() {
-        return amountInBaseUnit().hashCode();
-    }
-
-    private Number amountInBaseUnit() {
-        return unit.convertToBaseUnit(amount);
+        return unit.hashCodeFor(amount);
     }
 
     private Number convertToThisUnit(Measurement other) {
@@ -98,13 +96,13 @@ public class Measurement {
     }
 
     static class MeasurementUnit {
-        static MeasurementUnit oz = new MeasurementUnit(1);
+        static MeasurementUnit oz = new MeasurementUnit();
         static MeasurementUnit gill = new MeasurementUnit(5, oz);
         static MeasurementUnit pint = new MeasurementUnit(4, gill);
         static MeasurementUnit quart = new MeasurementUnit(2, pint);
         static MeasurementUnit gallon = new MeasurementUnit(4, quart);
 
-        static MeasurementUnit inch = new MeasurementUnit(1);
+        static MeasurementUnit inch = new MeasurementUnit();
         static MeasurementUnit foot = new MeasurementUnit(12, inch);
         static MeasurementUnit yard = new MeasurementUnit(3, foot);
         static MeasurementUnit chain = new MeasurementUnit(22, yard);
@@ -113,20 +111,30 @@ public class Measurement {
 
         private final int baseAmount;
 
-        MeasurementUnit(int baseAmount) {
-            this.baseAmount = baseAmount;
+        private final MeasurementUnit baseUnit;
+
+        MeasurementUnit() {
+            this.baseAmount = 1;
+            this.baseUnit = this;
         }
 
         MeasurementUnit(int amount, MeasurementUnit unit) {
-            this(amount * unit.baseAmount);
+            baseAmount = amount * unit.baseAmount;
+            baseUnit = unit.baseUnit;
         }
 
         Number convertTo(MeasurementUnit other, Number amount) {
+            requireSameBaseUnit(other);
             return amount.doubleValue() * baseAmount / other.baseAmount;
         }
 
-        Number convertToBaseUnit(Number amount) {
-            return amount.doubleValue() * baseAmount / oz.baseAmount;
+        int hashCodeFor(Number amount) {
+            return Objects.hash(convertTo(baseUnit, amount), baseUnit);
+        }
+
+        private void requireSameBaseUnit(MeasurementUnit other) {
+            if (!(this.baseUnit == other.baseUnit))
+                throw new IllegalArgumentException("Must be same measurement unit type");
         }
     }
 }
