@@ -20,6 +20,8 @@ class VolumeTest {
 
     @Test
     fun `should respect hashCode & equals contract`() {
+        assertEquals(0.gill.hashCode(), 0.oz.hashCode())
+
         val a = 1.gill
         val b = 1.gill
         assertEquals(a, b)
