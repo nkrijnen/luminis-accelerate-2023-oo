@@ -17,6 +17,12 @@ class Volume(private val amount: Number, private val unit: VolumeUnit) {
         if (other !is Volume) return false
         return this.amount == other.unit.convertTo(this.unit, other.amount)
     }
+
+    override fun hashCode(): Int {
+        var result = amount.hashCode()
+        result = 31 * result + unit.hashCode()
+        return result
+    }
 }
 
 fun Number.oz() = Volume(this, VolumeUnit.oz)
