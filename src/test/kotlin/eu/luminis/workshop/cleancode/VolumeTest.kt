@@ -1,6 +1,8 @@
 package eu.luminis.workshop.cleancode
 
-import kotlin.test.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
 
 class VolumeTest {
     @Test
@@ -8,6 +10,8 @@ class VolumeTest {
         assertEquals(1.gill, 5.oz)
         assertEquals(1.pint, 4.gill)
         assertEquals(0.gill, 0.oz)
+
+        assertNotEquals(1.gill, 1.oz)
     }
 
     @Test
@@ -17,6 +21,11 @@ class VolumeTest {
         assertEquals(a, b)
         assertEquals(b, a)
         assertEquals(a.hashCode(), b.hashCode())
+
+        val c = 2.gill
+        assertNotEquals(a, c)
+        assertNotEquals(c, a)
+        assertNotEquals(a.hashCode(), c.hashCode())
     }
 
     @Test
