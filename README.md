@@ -22,4 +22,10 @@ git checkout kotlin
 git checkout java
 ```
 
+```bash
+git checkout c#
+```
+
 **Tip**: for Kotlin or Java, use [IntelliJ Community Edition](https://www.jetbrains.com/idea/download).
+For C#, use [Visual Studio Code](https://code.visualstudio.com/Download)
+with [C# Extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
